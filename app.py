@@ -21,7 +21,7 @@ def generar_pdf(escuela, turno, modalidad, tabla_gramatica, tabla_vocabulario, f
     # Título principal
     pdf.set_font("Arial", size=12)
     pdf.set_y(30)  # Ajustar la posición del título para que no se sobreponga al logo
-    pdf.cell(200, 10, txt="Resultados por escuela - INEIIY 2024", ln=True, align="C")
+    pdf.cell(200, 10, txt="Consulta de información por escuela - INEIIY 2024", ln=True, align="C")
     pdf.ln(10)
     
     # Información de la escuela
@@ -73,7 +73,7 @@ def generar_pdf(escuela, turno, modalidad, tabla_gramatica, tabla_vocabulario, f
 df = pd.read_csv('Resultados.csv')
 
 # Configuración de la página
-st.set_page_config(page_title="Resultados por escuela - INEIIY 2024", layout="wide")
+st.set_page_config(page_title="Consulta de información por escuela - INEIIY 2024", layout="wide")
 
 # Convertir la imagen del logo a base64 (opcional)
 logo_path = "logo.png"
@@ -83,7 +83,7 @@ st.markdown(
     f"""
     <div style='text-align: center;'>
         <img src="data:image/png;base64,{image_to_base64(logo_path)}" width="235" height="56" style="margin-bottom: 10px;">
-        <h1>Resultados por escuela - INEIIY 2024</h1>
+        <h1>Consulta de información por escuela - INEIIY 2024</h1>
     </div>
     """,
     unsafe_allow_html=True
@@ -208,7 +208,7 @@ if not df_cct_filtered.empty:
             generar_pdf(escuela, turno_selected, modalidad, tabla_gramatica, tabla_vocabulario, temp_file_path, logo_path)
             st.markdown(
                 f"""
-                <a href="data:application/pdf;base64,{base64.b64encode(open(temp_file_path, "rb").read()).decode()}" download="Reporte_{escuela}_{turno_selected}.pdf">
+                <a href="data:application/pdf;base64,{base64.b64encode(open(temp_file_path, "rb").read()).decode()}" download="Consulta_de_informacion_{escuela}_{turno_selected}.pdf">
                     <button style="background-color: red; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">Descargar PDF</button>
                 </a>
                 """,
